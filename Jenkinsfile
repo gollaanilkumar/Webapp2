@@ -12,10 +12,12 @@ pipeline {
         }
   stage("Sonar Qube Analysis"){
    steps{
+    script{
     withSonarQubeEnv(credentialsId: 'sonar7-token') {
     // some block
        sh 'mvn sonar:sonar'
 }
+    }
   
    }
   }
