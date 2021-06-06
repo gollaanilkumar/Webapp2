@@ -13,7 +13,11 @@ pipeline {
   stage("Sonar Qube Analysis"){
    steps{
     sh 'mv target/maven*.war target/myweb.war'
-    sh 'mvn sonar:sonar'
+    withSonarQubeEnv(credentialsId: 'sonar7-token') {
+    // some block
+       sh 'mvn sonar:sonar'
+}
+  
    }
   }
         }
